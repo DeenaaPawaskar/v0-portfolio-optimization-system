@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { StockForm } from '@/components/portfolio/stock-form';
 import { ResultsDashboard } from '@/components/portfolio/results-dashboard';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -10,6 +10,7 @@ import type { OptimizationResult } from '@/lib/portfolio/types';
 import { RotateCcw, BarChart3 } from 'lucide-react';
 
 export default function Home() {
+  const router = useRouter();
   const [result, setResult] = useState<OptimizationResult | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -54,12 +55,15 @@ export default function Home() {
             </p>
           </div>
           <div className="flex items-center gap-4">
-            <Link href="/protected">
-              <Button variant="outline" size="sm" className="gap-2">
-                <BarChart3 className="h-4 w-4" />
-                Dashboard
-              </Button>
-            </Link>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="gap-2"
+              onClick={() => router.push('/protected')}
+            >
+              <BarChart3 className="h-4 w-4" />
+              Dashboard
+            </Button>
             <ThemeToggle />
           </div>
         </div>
