@@ -1,12 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { StockForm } from '@/components/portfolio/stock-form';
 import { ResultsDashboard } from '@/components/portfolio/results-dashboard';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import type { OptimizationResult } from '@/lib/portfolio/types';
-import { RotateCcw } from 'lucide-react';
+import { RotateCcw, BarChart3 } from 'lucide-react';
 
 export default function Home() {
   const [result, setResult] = useState<OptimizationResult | null>(null);
@@ -52,7 +53,15 @@ export default function Home() {
               Markowitz mean-variance optimization with technical signals
             </p>
           </div>
-          <ThemeToggle />
+          <div className="flex items-center gap-4">
+            <Link href="/protected">
+              <Button variant="outline" size="sm" className="gap-2">
+                <BarChart3 className="h-4 w-4" />
+                Dashboard
+              </Button>
+            </Link>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 

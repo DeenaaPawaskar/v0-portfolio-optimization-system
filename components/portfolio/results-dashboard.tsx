@@ -20,6 +20,9 @@ export function ResultsDashboard({ result }: ResultsDashboardProps) {
         expectedReturn={result.metrics.expectedReturn}
         volatility={result.metrics.volatility}
         sharpeRatio={result.metrics.sharpeRatio}
+        sortinoRatio={result.metrics.sortinoRatio}
+        maxDrawdown={result.metrics.maxDrawdown}
+        var95={result.metrics.var95}
       />
 
       {/* Main Charts */}

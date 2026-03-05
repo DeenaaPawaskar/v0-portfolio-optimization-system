@@ -43,6 +43,25 @@ export interface OptimizationResult {
     expectedReturn: number;
     volatility: number;
     sharpeRatio: number;
+    sortinoRatio: number;
+    maxDrawdown: number;
+    var95: number;
+  };
+  comparison?: {
+    optimized: {
+      expectedReturn: number;
+      volatility: number;
+      sharpeRatio: number;
+      sortinoRatio: number;
+      maxDrawdown: number;
+    };
+    equalWeight: {
+      expectedReturn: number;
+      volatility: number;
+      sharpeRatio: number;
+      sortinoRatio: number;
+      maxDrawdown: number;
+    };
   };
   efficientFrontier: Array<{
     volatility: number;
