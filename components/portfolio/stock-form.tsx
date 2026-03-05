@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect, FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -33,7 +33,7 @@ export function StockForm({ onSubmit }: StockFormProps) {
   const [searchValue, setSearchValue] = useState('');
 
   // Load available stocks on mount
-  React.useEffect(() => {
+  useEffect(() => {
     const loadStocks = async () => {
       try {
         const res = await fetch('/api/stocks');
@@ -62,7 +62,7 @@ export function StockForm({ onSubmit }: StockFormProps) {
     setStocks(stocks.filter((s) => s.symbol !== symbol));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (stocks.length === 0) {
